@@ -1,0 +1,38 @@
+PLATEFORME « ANGLAIS DU LYCÉE » — MISE EN LIGNE (gratuit, comme YOUZA)
+=========================================================================
+
+Ce dossier contient TOUT ce qu'il faut pour mettre ton site en ligne :
+- index.html        → la page (dernière maquette, 3 niveaux du lycée)
+- quiz.json         → le quiz du jour (modifié avec LISEZ-MOI-quiz.txt)
+- LISEZ-MOI-quiz.txt→ mode d'emploi du quiz, pour ton téléphone
+- annales/          → les 47 PDF d'examens nationaux (2020–2024, 3 filières),
+                      déjà reliés aux boutons « Sujet PDF » et « Corrigé PDF »
+
+Pour les quelques fichiers que le ministère n'a jamais publiés
+(ex. rattrapage 2020, certains corrigés 2021), le bouton affiche
+« bientôt » au lieu d'un lien cassé. Rien à faire de ton côté.
+
+ÉTAPES (10 minutes, depuis ton téléphone ou ton PC) :
+----------------------------------------------------
+1. Va sur github.com et connecte-toi à ton compte (celui de YOUZA : Wasslino).
+2. Crée un nouveau dépôt public, par ex. « anglais-bac » (bouton + « New repository »,
+   nomme-le, coche « Public », puis « Create repository »).
+3. Dans le dépôt : « Add file » → « Upload files », puis glisse TOUT le contenu
+   de CE dossier : index.html, quiz.json, LISEZ-MOI-quiz.txt, MISE-EN-LIGNE.txt,
+   et les dossiers annales (avec ses 3 sous-dossiers) et assets.
+   ⚠ IMPORTANT : glisse les FICHIERS et DOSSIERS eux-mêmes, pas un ZIP —
+   GitHub Pages ne sait pas lire les ZIP. Puis « Commit changes ».
+   ⚠ 34 Mo au total : l'upload web accepte jusqu'à 100 Mo par fichier, ça passe.
+4. Va dans « Settings » → « Pages » → sous « Branch », choisis « main » et « / (root) »,
+   puis « Save ». Attends 1–2 minutes.
+5. Ton site est en ligne à : https://wasslino.github.io/anglais-bac/
+
+APRÈS LA MISE EN LIGNE :
+- Pour changer le quiz du jour : ouvre quiz.json sur github.com → crayon → modifie
+  → « Commit changes ». Le site se met à jour seul en ~2 minutes.
+  (Détails dans LISEZ-MOI-quiz.txt.)
+- Pour ajouter des leçons ou des PDF plus tard : dis-le-moi ici, je te prépare
+  les fichiers mis à jour et tu les ré-uploades de la même façon.
+
+Rien n'est publié tant que TU n'as pas fait ces étapes — ce dossier reste
+sur ton ordinateur en attendant.

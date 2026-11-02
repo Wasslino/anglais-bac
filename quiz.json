@@ -1,0 +1,17 @@
+{
+  "titre": "Quiz du jour — Phrasal Verbs",
+  "questions": [
+    {
+      "jour": "Jour 10",
+      "question": "“Don't believe him: he always ______ stories to impress his friends.”",
+      "choix": [
+        "make up",
+        "give up",
+        "look into",
+        "drop out"
+      ],
+      "bonne_reponse": 0,
+      "explication": "Make up = inventer (une histoire). On ne le croit pas : il invente toujours des histoires pour impressionner ses amis."
+    }
+  ]
+}

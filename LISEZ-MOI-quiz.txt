@@ -1,0 +1,28 @@
+QUIZ DU JOUR — mode d'emploi (simple)
+
+Ce fichier (quiz.json) contient le quiz affiché sur ton site.
+Chaque jour, tu remplaces les questions par celle(s) du jour.
+
+COMMENT MODIFIER (depuis ton téléphone) :
+1. Va sur github.com → ton dépôt du site → ouvre le fichier quiz.json
+2. Touche l'icône crayon (Edit)
+3. Change UNIQUEMENT le texte entre les guillemets "..." :
+   - "question" : la question du jour
+   - "choix" : les 4 réponses proposées
+   - "bonne_reponse" : le numéro de la bonne réponse
+     (0 = 1er choix, 1 = 2e choix, 2 = 3e choix, 3 = 4e choix)
+4. NE TOUCHE PAS aux virgules, aux guillemets et aux accolades —
+   sinon le quiz ne s'affichera plus.
+5. En bas : "Commit changes" (valider). Le site se met à jour
+   tout seul en ~2 minutes.
+
+EXEMPLE — pour mettre la question « MAKE UP » :
+  "question": "Que veut dire « MAKE UP » ?",
+  "choix": ["Inventer / se réconcilier", "Détruire", "Monter", "Nettoyer"],
+  "bonne_reponse": 0
+
+ASTUCE : prépare ton texte dans tes notes, puis copie-colle
+les morceaux entre les guillemets. Plus sûr que tout retaper.
+
+Et si tu préfères : envoie-moi simplement la question + les 4 choix
+ici dans le chat, et je mets le fichier à jour pour toi.
