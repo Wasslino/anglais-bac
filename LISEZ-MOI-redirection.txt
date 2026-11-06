@@ -1,0 +1,19 @@
+REDIRECTION — ancienne adresse anglais-bac → nouvelle adresse anglais-lycee
+==============================================================================
+
+Pourquoi : après le renommage du dépôt (2026-11-06), l'ancienne adresse
+https://wasslino.github.io/anglais-bac/ affiche une erreur « Site not found »
+au lieu de rediriger. Ce fichier remet une redirection en place.
+
+ÉTAPES (5 minutes, depuis ton téléphone) :
+1. Va sur github.com → « + » → « New repository ».
+2. Nom : anglais-bac — coche « Public » → « Create repository ».
+3. « Add file » → « Upload files » → glisse le fichier index.html
+   de CE dossier (rien d'autre) → « Commit changes ».
+4. Va dans « Settings » → « Pages » → sous « Branch », choisis
+   « main » et « / (root) » → « Save ». Attends 1-2 minutes.
+5. Vérifie : https://wasslino.github.io/anglais-bac/ doit maintenant
+   renvoyer vers https://wasslino.github.io/anglais-lycee/.
+
+Ce dossier ne contient que la page de redirection : le vrai site reste
+dans le dépôt anglais-lycee.

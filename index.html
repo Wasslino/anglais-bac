@@ -207,6 +207,7 @@
         text-decoration: none;
       }
       .dl:hover { border-color: var(--gold); color: var(--gold); }
+      .dl.soon { opacity: .55; cursor: default; }
       .exam-note {
         margin-top: 16px; font-size: 0.9rem; color: var(--ink-soft);
         background: var(--surface-2); border: 1px solid var(--line); border-radius: 10px; padding: 12px 16px;
@@ -648,11 +649,11 @@
          ============================================================ */
       var QUIZ_DU_JOUR = [
         {
-          jour: "Jour 8",
-          question: "“After his illness, Omar studied hard to ______ his classmates.”",
-          choix: ["catch up with", "give up", "look into", "turn down"],
+          jour: "Jour 14",
+          question: "“The teacher told a joke to ______ at the beginning of the course.”",
+          choix: ["break the ice", "hit the books", "give up", "look into"],
           bonne_reponse: 0,
-          explication: "Catch up with = rattraper quelqu'un. Après sa maladie, Omar a beaucoup étudié pour rattraper ses camarades."
+          explication: "Break the ice = briser la glace (détendre l’atmosphère). Le professeur a raconté une blague pour briser la glace au début du cours."
         },
         {
           jour: "Jour 1",
@@ -762,6 +763,24 @@
       makeFilterRow("fSession", "session", [{ value: "all", label: "Toutes" }].concat(SESSIONS.map(function (s) { return { value: s.id, label: s.label }; })));
       makeFilterRow("fTrack", "track", [{ value: "all", label: "Toutes" }].concat(TRACKS.map(function (t) { return { value: t.id, label: t.label }; })));
 
+      var EXAM_FOLDER = { sciences: "sciences", lettres: "lettres", sh: "sciences-humaines" };
+      var EXAM_MISSING = {
+        "sciences|2021|rattrapage|corrige": 1,
+        "lettres|2021|normale|corrige": 1,
+        "lettres|2021|rattrapage|sujet": 1,
+        "lettres|2021|rattrapage|corrige": 1,
+        "sh|2021|normale|corrige": 1,
+        "sh|2021|rattrapage|sujet": 1,
+        "sh|2021|rattrapage|corrige": 1
+      };
+      function dlLink(e, kind) {
+        var label = kind === "sujet" ? "Sujet PDF \u2193" : "Corrigé PDF \u2193";
+        if (EXAM_MISSING[e.track + "|" + e.year + "|" + e.session + "|" + kind]) {
+          return '<span class="dl soon">Bientôt</span>';
+        }
+        var file = "annales/" + EXAM_FOLDER[e.track] + "/" + e.year + "-" + e.session + "-" + kind + ".pdf";
+        return '<a class="dl" href="' + file + '" target="_blank" rel="noopener">' + label + '</a>';
+      }
       function renderExams() {
         var grid = document.getElementById("examGrid");
         grid.innerHTML = "";
@@ -783,11 +802,8 @@
             '<div class="meta"><span class="chip gold">' + e.year + '</span><span class="chip">Session ' + e.sessionLabel.toLowerCase() + '</span><span class="chip level">2ème année Bac</span></div>' +
             "<h3>Anglais — " + e.trackLabel + "</h3>" +
             "<p>Examen national du Baccalauréat, session " + e.sessionLabel.toLowerCase() + " " + e.year + ".</p>" +
-            '<div class="actions"><a class="dl" href="#" data-dl="1">Sujet PDF ↓</a><a class="dl" href="#" data-dl="1">Corrigé PDF ↓</a></div>';
+            '<div class="actions">' + dlLink(e, "sujet") + dlLink(e, "corrige") + '</div>';
           grid.appendChild(card);
-        });
-        grid.querySelectorAll("[data-dl]").forEach(function (a) {
-          a.addEventListener("click", function (ev) { ev.preventDefault(); });
         });
       }
       renderExams();
@@ -837,6 +853,15 @@
 
       /* ================= Quiz (lecture du bloc QUIZ_DU_JOUR ci-dessus) ================= */
       var QUIZ = QUIZ_DU_JOUR;
+      fetch("quiz.json").then(function (r) { if (!r.ok) throw new Error("quiz"); return r.json(); }).then(function (d) {
+        if (d && d.questions && d.questions.length) {
+          var fresh = d.questions.map(function (q) {
+            return { jour: q.jour, question: q.question, choix: q.choix, bonne_reponse: q.bonne_reponse, explication: q.explication };
+          });
+          QUIZ = fresh.concat(QUIZ_DU_JOUR.filter(function (q) { return q.jour !== fresh[0].jour; }).slice(0, 5));
+          qi = 0; score = 0; renderQuestion();
+        }
+      }).catch(function () { /* quiz intégré gardé en secours */ });
       var qi = 0, score = 0, answered = false;
       var qSentence = document.getElementById("qSentence"), qTrans = document.getElementById("qTrans"),
           qOpts = document.getElementById("qOpts"), qFeedback = document.getElementById("qFeedback"),
